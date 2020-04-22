@@ -1,0 +1,160 @@
+
+/home/vlad/Vlad_scr1/scr1/build/verilator_wf_AHB_IMC/sbreak.elf:     формат файла elf32-littleriscv
+
+
+Дизассемблирование раздела .text.init:
+
+00000000 <SIM_EXIT-0xf4>:
+	...
+
+000000f4 <SIM_EXIT>:
+  f4:	00000013          	nop
+
+000000f8 <SIM_STOP>:
+  f8:	0000006f          	j	f8 <SIM_STOP>
+  fc:	ffff                	0xffff
+  fe:	ffff                	0xffff
+	...
+
+000006c0 <trap_vector>:
+ 6c0:	34202773          	csrr	a4,mcause
+ 6c4:	478d                	li	a5,3
+ 6c6:	02f71b63          	bne	a4,a5,6fc <trap_vector+0x3c>
+ 6ca:	f0000637          	lui	a2,0xf0000
+ 6ce:	06200793          	li	a5,98
+ 6d2:	00f60023          	sb	a5,0(a2) # f0000000 <__global_pointer$+0xefffee78>
+ 6d6:	07200793          	li	a5,114
+ 6da:	00f60023          	sb	a5,0(a2)
+ 6de:	06500793          	li	a5,101
+ 6e2:	00f60023          	sb	a5,0(a2)
+ 6e6:	06100793          	li	a5,97
+ 6ea:	00f60023          	sb	a5,0(a2)
+ 6ee:	06b00793          	li	a5,107
+ 6f2:	00f60023          	sb	a5,0(a2)
+ 6f6:	47a9                	li	a5,10
+ 6f8:	00f60023          	sb	a5,0(a2)
+ 6fc:	47a1                	li	a5,8
+ 6fe:	47a1                	li	a5,8
+ 700:	02f70463          	beq	a4,a5,728 <_report>
+ 704:	47a5                	li	a5,9
+ 706:	02f70163          	beq	a4,a5,728 <_report>
+ 70a:	47ad                	li	a5,11
+ 70c:	00f70e63          	beq	a4,a5,728 <_report>
+ 710:	00000717          	auipc	a4,0x0
+ 714:	1b470713          	addi	a4,a4,436 # 8c4 <mtvec_handler>
+ 718:	c311                	beqz	a4,71c <trap_vector+0x5c>
+ 71a:	8702                	jr	a4
+ 71c:	34202773          	csrr	a4,mcause
+ 720:	00075363          	bgez	a4,726 <handle_exception>
+ 724:	a009                	j	726 <handle_exception>
+
+00000726 <handle_exception>:
+ 726:	4505                	li	a0,1
+
+00000728 <_report>:
+ 728:	1b80006f          	j	8e0 <sc_exit>
+ 72c:	00000013          	nop
+ 730:	00000013          	nop
+ 734:	00000013          	nop
+ 738:	00000013          	nop
+ 73c:	00000013          	nop
+	...
+
+00000800 <_start>:
+ 800:	f1402573          	csrr	a0,mhartid
+ 804:	e101                	bnez	a0,804 <_start+0x4>
+ 806:	4e01                	li	t3,0
+ 808:	00000297          	auipc	t0,0x0
+ 80c:	eb828293          	addi	t0,t0,-328 # 6c0 <trap_vector>
+ 810:	30529073          	csrw	mtvec,t0
+ 814:	4505                	li	a0,1
+ 816:	057e                	slli	a0,a0,0x1f
+ 818:	00054863          	bltz	a0,828 <_start+0x28>
+ 81c:	0ff0000f          	fence
+ 820:	85f2                	mv	a1,t3
+ 822:	4501                	li	a0,0
+ 824:	00000073          	ecall
+ 828:	fffff297          	auipc	t0,0xfffff
+ 82c:	7d828293          	addi	t0,t0,2008 # 0 <CL_SIZE-0x20>
+ 830:	00028e63          	beqz	t0,84c <_start+0x4c>
+ 834:	10529073          	csrw	stvec,t0
+ 838:	0000b2b7          	lui	t0,0xb
+ 83c:	10928293          	addi	t0,t0,265 # b109 <__global_pointer$+0x9f81>
+ 840:	30229073          	csrw	medeleg,t0
+ 844:	30202373          	csrr	t1,medeleg
+ 848:	ec629fe3          	bne	t0,t1,726 <handle_exception>
+ 84c:	30005073          	csrwi	mstatus,0
+ 850:	00002537          	lui	a0,0x2
+ 854:	80050513          	addi	a0,a0,-2048 # 1800 <__global_pointer$+0x678>
+ 858:	30052073          	csrs	mstatus,a0
+ 85c:	00000297          	auipc	t0,0x0
+ 860:	04428293          	addi	t0,t0,68 # 8a0 <_run_test>
+ 864:	34129073          	csrw	mepc,t0
+ 868:	f1402573          	csrr	a0,mhartid
+ 86c:	30200073          	mret
+	...
+
+Дизассемблирование раздела .text:
+
+000008a0 <_run_test>:
+ 8a0:	4e09                	li	t3,2
+ 8a2:	9002                	ebreak
+ 8a4:	a019                	j	8aa <fail>
+ 8a6:	01c01863          	bne	zero,t3,8b6 <pass>
+
+000008aa <fail>:
+ 8aa:	0ff0000f          	fence
+ 8ae:	85f2                	mv	a1,t3
+ 8b0:	4505                	li	a0,1
+ 8b2:	00000073          	ecall
+
+000008b6 <pass>:
+ 8b6:	0ff0000f          	fence
+ 8ba:	85f2                	mv	a1,t3
+ 8bc:	4501                	li	a0,0
+ 8be:	00000073          	ecall
+ 8c2:	0001                	nop
+
+000008c4 <mtvec_handler>:
+ 8c4:	430d                	li	t1,3
+ 8c6:	342022f3          	csrr	t0,mcause
+ 8ca:	fe6290e3          	bne	t0,t1,8aa <fail>
+ 8ce:	b7e5                	j	8b6 <pass>
+
+000008d0 <ecall>:
+ 8d0:	00000073          	ecall
+	...
+
+000008e0 <sc_exit>:
+ 8e0:	815ff06f          	j	f4 <SIM_EXIT>
+ 8e4:	00000013          	nop
+ 8e8:	00000013          	nop
+ 8ec:	00000013          	nop
+ 8f0:	00000013          	nop
+ 8f4:	00000013          	nop
+ 8f8:	00000013          	nop
+ 8fc:	00000013          	nop
+	...
+
+Дизассемблирование раздела .data:
+
+00000920 <begin_regstate>:
+	...
+
+Дизассемблирование раздела .tohost:
+
+00000940 <tohost>:
+	...
+
+00000980 <fromhost>:
+	...
+
+Дизассемблирование раздела .sdata:
+
+00000988 <__global_pointer$-0x800>:
+	...
+
+Дизассемблирование раздела .stack:
+
+0000fc00 <.stack>:
+	...
