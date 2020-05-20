@@ -1,0 +1,56 @@
+[*]
+[*] GTKWave Analyzer v3.3.86 (w)1999-2017 BSI
+[*] Wed May 20 13:06:43 2020
+[*]
+[dumpfile] "/home/vlad/Vlad_scr1/scr1/results/simx.vcd"
+[dumpfile_mtime] "Wed May 20 12:20:55 2020"
+[dumpfile_size] 285797
+[savefile] "/home/vlad/Vlad_scr1/scr1/results/resutl_wave.gtkw"
+[timestart] 183
+[size] 1853 895
+[pos] -1 -1
+*-3.000000 -1 192 222 232 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[markername] AFetch
+[markername] BDecode
+[markername] CExecute
+[treeopen] scr1_top_tb_ahb.
+[treeopen] scr1_top_tb_ahb.i_top.
+[treeopen] scr1_top_tb_ahb.i_top.i_core_top.
+[treeopen] scr1_top_tb_ahb.i_top.i_core_top.i_pipe_top.
+[treeopen] scr1_top_tb_ahb.i_top.i_core_top.i_pipe_top.i_pipe_exu.
+[treeopen] scr1_top_tb_ahb.i_top.i_core_top.i_pipe_top.i_pipe_exu.i_ialu.
+[treeopen] scr1_top_tb_ahb.i_top.i_core_top.i_pipe_top.i_pipe_exu.i_lsu.
+[sst_width] 43
+[signals_width] 208
+[sst_expanded] 0
+[sst_vpaned_height] 256
+@28
+scr1_top_tb_ahb.clk
+@22
+[color] 6
+scr1_top_tb_ahb.i_top.i_core_top.i_pipe_top.curr_pc[31:0]
+scr1_top_tb_ahb.i_top.i_core_top.i_pipe_top.imem_addr[31:0]
+scr1_top_tb_ahb.i_top.i_core_top.i_pipe_top.imem_rdata[31:0]
+@28
+scr1_top_tb_ahb.i_top.i_core_top.i_pipe_top.imem_resp[1:0]
+scr1_top_tb_ahb.i_top.i_core_top.i_pipe_top.imem_req
+@22
+scr1_top_tb_ahb.i_top.i_core_top.i_pipe_top.i_pipe_idu.instr[31:0]
+@28
+scr1_top_tb_ahb.i_top.i_core_top.i_pipe_top.i_pipe_exu.idu2exu_use_rd
+scr1_top_tb_ahb.i_top.i_core_top.i_pipe_top.i_pipe_exu.idu2exu_use_imm
+@22
+[color] 1
+scr1_top_tb_ahb.i_top.i_core_top.i_pipe_top.i_pipe_exu.exu_queue.imm[31:0]
+[color] 1
+scr1_top_tb_ahb.i_top.i_core_top.i_pipe_top.i_pipe_exu.exu2mprf_rd_addr[4:0]
+[color] 1
+scr1_top_tb_ahb.i_top.i_core_top.i_pipe_top.i_pipe_exu.exu2mprf_rd_data[31:0]
+[color] 3
+scr1_top_tb_ahb.i_top.i_core_top.i_pipe_top.i_pipe_exu.i_ialu.ialu_sum2_op1[31:0]
+[color] 3
+scr1_top_tb_ahb.i_top.i_core_top.i_pipe_top.i_pipe_exu.i_ialu.ialu_sum2_op2[31:0]
+[color] 3
+scr1_top_tb_ahb.i_top.i_core_top.i_pipe_top.i_pipe_exu.i_ialu.ialu_sum2_res[31:0]
+[pattern_trace] 1
+[pattern_trace] 0
